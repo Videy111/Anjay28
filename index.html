@@ -1,0 +1,2428 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#070812">
+<title>▶️KOLEKSI</title>
+<meta name="description" content="Tonton video terbaru dan video lainnya.">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="▶️KOLEKSI">
+<meta property="og:description" content="Tonton video terbaru dan video lainnya.">
+<meta property="og:image" content="https://jpcdn.it/img/78cdf523e00fb268089737a9a79c0a76.jpg">
+<meta property="og:image:alt" content="▶️KOLEKSI">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="▶️KOLEKSI">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="▶️KOLEKSI">
+<meta name="twitter:description" content="Tonton video terbaru dan video lainnya.">
+<meta name="twitter:image" content="https://jpcdn.it/img/78cdf523e00fb268089737a9a79c0a76.jpg">
+
+<style>
+:root {
+  --bg: #070812;
+  --text: #f7f8ff;
+  --muted: #9ca3b8;
+  --line: rgba(255,255,255,.09);
+  --purple: #8b5cf6;
+  --blue: #38bdf8;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  background: var(--bg);
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  color: var(--text);
+  font-family: Inter, system-ui, -apple-system,
+    BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+  background:
+    radial-gradient(circle at 15% 0%, rgba(139,92,246,.20), transparent 30%),
+    radial-gradient(circle at 90% 10%, rgba(56,189,248,.13), transparent 28%),
+    linear-gradient(145deg,#070812 0%,#0b0d18 48%,#070812 100%);
+}
+
+button {
+  font: inherit;
+}
+
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 18px;
+  background: rgba(7,8,18,.88);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--line);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 800;
+}
+
+.brand-mark {
+  width: 35px;
+  height: 35px;
+  border-radius: 11px;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(135deg,var(--purple),var(--blue));
+}
+
+.share-top {
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--line);
+  border-radius: 13px;
+  color: #fff;
+  background: rgba(255,255,255,.05);
+  cursor: pointer;
+}
+
+main {
+  width: min(1060px,100%);
+  margin: auto;
+  padding: 22px 16px 45px;
+}
+
+.player-shell {
+  position: relative;
+  overflow: hidden;
+  background: #000;
+  border: 1px solid rgba(255,255,255,.10);
+  border-radius: 20px;
+  box-shadow: 0 25px 80px rgba(0,0,0,.45);
+}
+
+video {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16/10;
+  object-fit: contain;
+  background: #000;
+}
+
+.video-top-gradient {
+  position: absolute;
+  inset: 0 0 auto;
+  height: 105px;
+  pointer-events: none;
+  background: linear-gradient(to bottom,rgba(0,0,0,.55),transparent);
+}
+
+.video-bottom-gradient {
+  position: absolute;
+  inset: auto 0 0;
+  height: 120px;
+  pointer-events: none;
+  background: linear-gradient(to top,rgba(0,0,0,.72),transparent);
+}
+
+.player-badge {
+  position: absolute;
+  top: 13px;
+  left: 13px;
+  z-index: 3;
+  padding: 7px 10px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 700;
+  background: rgba(8,9,18,.75);
+  border: 1px solid rgba(255,255,255,.12);
+  pointer-events: none;
+}
+
+.center-play-btn {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+  z-index: 10;
+  width: 70px;
+  height: 70px;
+  border: 1px solid rgba(255,255,255,.38);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 28px;
+  background: rgba(0,0,0,.70);
+  cursor: pointer;
+  transition: opacity .2s, transform .2s;
+}
+
+.center-play-btn.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.controls {
+  position: absolute;
+  left: 12px;
+  right: 12px;
+  bottom: 12px;
+  z-index: 12;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  opacity: 1;
+  visibility: visible;
+  transition: opacity .25s, visibility .25s;
+}
+
+.player-shell.controls-hidden .controls {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.ctrl {
+  width: 40px;
+  height: 38px;
+  flex: 0 0 auto;
+  border: 1px solid rgba(255,255,255,.13);
+  border-radius: 11px;
+  background: rgba(10,11,18,.72);
+  color: #fff;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+}
+
+.progress {
+  flex: 1;
+  min-width: 20px;
+  height: 5px;
+  border-radius: 99px;
+  background: rgba(255,255,255,.22);
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.progress-fill {
+  width: 0%;
+  height: 100%;
+  background: linear-gradient(90deg,var(--purple),var(--blue));
+  border-radius: 99px;
+}
+
+.time {
+  font-size: 11px;
+  color: #fff;
+  min-width: 70px;
+  text-align: center;
+  white-space: nowrap;
+}
+
+/* FULLSCREEN VIDEO UTAMA */
+
+.player-shell:fullscreen,
+.player-shell.is-fullscreen {
+  border-radius: 0;
+  border: 0;
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh;
+  background: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.player-shell:fullscreen video,
+.player-shell.is-fullscreen video {
+  width: 100%;
+  height: 100%;
+  max-height: 100vh;
+  max-height: 100dvh;
+  aspect-ratio: auto;
+}
+
+.player-shell:fullscreen .controls,
+.player-shell.is-fullscreen .controls {
+  bottom: 18px;
+}
+
+/* OVERLAY IKLAN VIDEO UTAMA */
+
+.continue-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 15;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: rgba(3,4,10,.78);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.continue-overlay.show {
+  display: flex;
+}
+
+.continue-box {
+  width: min(430px,100%);
+  padding: 27px 23px 23px;
+  text-align: center;
+  border: 1px solid rgba(255,255,255,.12);
+  border-radius: 22px;
+  background: #101221;
+  box-shadow: 0 25px 80px rgba(0,0,0,.55);
+}
+
+.ad-icon {
+  width: 48px;
+  height: 48px;
+  margin: 0 auto 14px;
+  border-radius: 15px;
+  display: grid;
+  place-items: center;
+  color: #fff;
+  background: linear-gradient(135deg,var(--purple),var(--blue));
+  font-size: 20px;
+}
+
+.continue-box h2 {
+  font-size: 21px;
+  line-height: 1.3;
+}
+
+.continue-box p {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.55;
+  margin: 9px 0 18px;
+}
+
+.ad-button {
+  display: block;
+  width: 100%;
+  padding: 12px 16px;
+  border-radius: 13px;
+  color: #fff;
+  font-weight: 800;
+  text-decoration: none;
+  background: linear-gradient(135deg,var(--purple),#6366f1,var(--blue));
+  cursor: pointer;
+}
+
+.small-note {
+  font-size: 10px;
+  color: #a2a7ba;
+  margin-top: 10px;
+}
+
+/* INFORMASI VIDEO */
+
+.info {
+  padding: 20px 2px 0;
+}
+
+.title {
+  font-size: clamp(21px,3vw,30px);
+  line-height: 1.2;
+  letter-spacing: -.5px;
+}
+
+.meta {
+  margin-top: 8px;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.divider {
+  height: 1px;
+  background: var(--line);
+  margin: 22px 0;
+}
+
+/* NAVIGASI VIDEO UTAMA */
+
+.video-navigation {
+  margin: 20px 0 25px;
+  padding: 17px;
+  border: 1px solid rgba(255,255,255,.10);
+  border-radius: 18px;
+  background: rgba(18,20,35,.75);
+}
+
+.navigation-heading {
+  font-size: 15px;
+  font-weight: 800;
+  margin-bottom: 6px;
+}
+
+.navigation-description {
+  font-size: 12px;
+  color: var(--muted);
+  margin-bottom: 15px;
+  line-height: 1.5;
+}
+
+.video-number-scroller {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  min-width: 0;
+}
+
+.video-numbers {
+  display: flex;
+  flex: 1;
+  min-width: 0;
+  gap: 9px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  flex-wrap: nowrap;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+  padding: 4px 2px 10px;
+  overscroll-behavior-x: contain;
+}
+
+.video-numbers::-webkit-scrollbar {
+  display: none;
+}
+
+.video-number {
+  flex: 0 0 48px;
+  width: 48px;
+  height: 48px;
+  border: 1px solid rgba(255,255,255,.13);
+  border-radius: 12px;
+  color: #e8eaff;
+  background: rgba(255,255,255,.045);
+  font-size: 17px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: background .2s,border-color .2s,transform .2s;
+}
+
+.video-number:hover {
+  border-color: var(--blue);
+  transform: translateY(-2px);
+}
+
+.video-number.active {
+  color: #fff;
+  background: linear-gradient(135deg,var(--purple),#4f46e5,var(--blue));
+  border-color: rgba(255,255,255,.4);
+  box-shadow: 0 7px 22px rgba(99,102,241,.25);
+}
+
+.scroll-arrow {
+  flex: 0 0 36px;
+  width: 36px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: rgba(255,255,255,.07);
+  color: #fff;
+  font-size: 25px;
+  cursor: pointer;
+}
+
+.scroll-arrow:disabled {
+  opacity: .3;
+  cursor: default;
+}
+
+.now-playing {
+  margin-top: 10px;
+  font-size: 12px;
+  color: #c4b5fd;
+  text-align: center;
+}
+
+/* KARTU KOLEKSI */
+
+.collection-card {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin: 22px 0 25px;
+  padding: 20px;
+  overflow: hidden;
+  border: 1px solid rgba(139,92,246,.42);
+  border-radius: 19px;
+  background:
+    radial-gradient(circle at 100% 0%, rgba(56,189,248,.16), transparent 45%),
+    linear-gradient(135deg, rgba(139,92,246,.15), rgba(18,20,35,.96) 65%);
+  box-shadow: 0 12px 35px rgba(0,0,0,.22);
+}
+
+.collection-icon {
+  flex: 0 0 54px;
+  width: 54px;
+  height: 54px;
+  display: grid;
+  place-items: center;
+  border-radius: 16px;
+  font-size: 26px;
+  background: linear-gradient(135deg,var(--purple),var(--blue));
+}
+
+.collection-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.collection-content h2 {
+  font-size: 17px;
+  line-height: 1.35;
+  margin-bottom: 6px;
+}
+
+.collection-content p {
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.collection-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  margin-top: 13px;
+  padding: 11px 15px;
+  border-radius: 11px;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 800;
+  text-decoration: none;
+  background: linear-gradient(110deg,var(--purple),#6366f1,var(--blue));
+  box-shadow: 0 6px 18px rgba(99,102,241,.2);
+}
+
+/* VIDEO TRENDING */
+
+.trending-section {
+  margin: 28px 0 25px;
+  padding: 17px;
+  border: 1px solid rgba(255,255,255,.10);
+  border-radius: 19px;
+  background: rgba(18,20,35,.80);
+}
+
+.trending-heading {
+  font-size: 19px;
+  font-weight: 900;
+  margin-bottom: 7px;
+  line-height: 1.4;
+}
+
+.trending-description {
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.6;
+  margin-bottom: 16px;
+}
+
+.trending-player-shell {
+  position: relative;
+  overflow: hidden;
+  background: #000;
+  border: 1px solid rgba(255,255,255,.12);
+  border-radius: 15px;
+  box-shadow: 0 15px 40px rgba(0,0,0,.35);
+}
+
+.trending-player-shell video {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16/10;
+  object-fit: contain;
+  background: #000;
+}
+
+/* TOMBOL TENGAH TRENDING */
+
+.trending-center-play {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+  width: 65px;
+  height: 65px;
+  border: 1px solid rgba(255,255,255,.4);
+  border-radius: 50%;
+  color: #fff;
+  background: rgba(0,0,0,.72);
+  font-size: 27px;
+  cursor: pointer;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity .2s, transform .2s;
+}
+
+.trending-center-play.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* KONTROL TRENDING */
+
+.trending-controls {
+  position: absolute;
+  left: 10px;
+  right: 10px;
+  bottom: 10px;
+  z-index: 12;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  opacity: 1;
+  visibility: visible;
+  transition: opacity .25s, visibility .25s;
+}
+
+.trending-player-shell.controls-hidden .trending-controls {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.trending-ctrl {
+  width: 38px;
+  height: 36px;
+  flex: 0 0 auto;
+  border: 1px solid rgba(255,255,255,.15);
+  border-radius: 10px;
+  color: #fff;
+  background: rgba(10,11,18,.8);
+  cursor: pointer;
+}
+
+.trending-progress {
+  flex: 1;
+  height: 5px;
+  min-width: 20px;
+  border-radius: 20px;
+  background: rgba(255,255,255,.25);
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.trending-progress-fill {
+  width: 0%;
+  height: 100%;
+  background: linear-gradient(90deg,var(--purple),var(--blue));
+}
+
+.trending-time {
+  min-width: 75px;
+  color: #fff;
+  font-size: 10px;
+  text-align: center;
+  white-space: nowrap;
+}
+
+/* FULLSCREEN TRENDING */
+
+.trending-player-shell:fullscreen,
+.trending-player-shell.is-fullscreen {
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh;
+  border-radius: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.trending-player-shell:fullscreen video,
+.trending-player-shell.is-fullscreen video {
+  width: 100%;
+  height: 100%;
+  max-height: 100vh;
+  max-height: 100dvh;
+  aspect-ratio: auto;
+}
+
+.trending-player-shell:fullscreen .trending-controls,
+.trending-player-shell.is-fullscreen .trending-controls {
+  bottom: 18px;
+}
+
+/* SEMBUNYIKAN JUDUL DAN STATUS VIDEO TRENDING */
+
+.trending-video-title,
+.trending-video-description,
+.trending-now-playing {
+  display: none !important;
+}
+
+.trending-number-heading {
+  font-size: 14px;
+  font-weight: 800;
+  margin-top: 21px;
+  margin-bottom: 10px;
+}
+
+.trending-number-scroller {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.trending-numbers {
+  display: flex;
+  flex: 1;
+  min-width: 0;
+  gap: 9px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  flex-wrap: nowrap;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+  padding: 4px 2px 10px;
+}
+
+.trending-numbers::-webkit-scrollbar {
+  display: none;
+}
+
+.trending-number {
+  flex: 0 0 48px;
+  width: 48px;
+  height: 48px;
+  border: 1px solid rgba(255,255,255,.13);
+  border-radius: 12px;
+  color: #e8eaff;
+  background: rgba(255,255,255,.045);
+  font-size: 17px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.trending-number.active {
+  color: #fff;
+  background: linear-gradient(135deg,var(--purple),#4f46e5,var(--blue));
+  border-color: rgba(255,255,255,.4);
+  box-shadow: 0 7px 22px rgba(99,102,241,.25);
+}
+
+.trending-scroll-arrow {
+  flex: 0 0 36px;
+  height: 44px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  color: #fff;
+  background: rgba(255,255,255,.07);
+  font-size: 23px;
+  cursor: pointer;
+}
+
+.trending-scroll-arrow:disabled {
+  opacity: .3;
+  cursor: default;
+}
+
+/* OVERLAY IKLAN TRENDING */
+
+.trending-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 15;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 15px;
+  background: rgba(3,4,10,.82);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.trending-overlay.show {
+  display: flex;
+}
+
+.trending-overlay-box {
+  width: min(400px,100%);
+  padding: 24px 18px;
+  text-align: center;
+  border: 1px solid rgba(255,255,255,.14);
+  border-radius: 20px;
+  background: #101221;
+}
+
+.trending-overlay-box h3 {
+  font-size: 20px;
+}
+
+.trending-overlay-box p {
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.6;
+  margin: 10px 0 17px;
+}
+
+.trending-ad-button {
+  display: block;
+  padding: 13px;
+  border-radius: 12px;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 800;
+  text-decoration: none;
+  background: linear-gradient(135deg,var(--purple),#6366f1,var(--blue));
+}
+
+.trending-ad-note {
+  margin-top: 10px;
+  color: #a2a7ba;
+  font-size: 10px;
+}
+
+footer {
+  text-align: center;
+  color: #73798c;
+  font-size: 12px;
+  padding: 22px 0 0;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:700px) {
+
+  .topbar {
+    height: 58px;
+    padding: 0 12px;
+  }
+
+  main {
+    padding: 12px 10px 35px;
+  }
+
+  .player-shell {
+    border-radius: 15px;
+  }
+
+  video {
+    aspect-ratio: 5/4;
+  }
+
+  .controls {
+    left: 9px;
+    right: 9px;
+    bottom: 8px;
+    gap: 6px;
+  }
+
+  .ctrl {
+    width: 36px;
+    height: 35px;
+  }
+
+  .time {
+    font-size: 10px;
+    min-width: 52px;
+  }
+
+  .info {
+    padding-top: 16px;
+  }
+
+  .video-navigation {
+    padding: 13px;
+  }
+
+  .video-numbers {
+    gap: 7px;
+  }
+
+  .video-number {
+    flex-basis: 44px;
+    width: 44px;
+    height: 44px;
+    border-radius: 11px;
+    font-size: 16px;
+  }
+
+  .scroll-arrow {
+    flex-basis: 32px;
+    width: 32px;
+    height: 42px;
+  }
+
+  .continue-box {
+    padding: 23px 17px 18px;
+  }
+
+  .center-play-btn {
+    width: 64px;
+    height: 64px;
+    font-size: 26px;
+  }
+
+  .collection-card {
+    gap: 12px;
+    padding: 15px;
+    border-radius: 16px;
+  }
+
+  .collection-icon {
+    flex-basis: 44px;
+    width: 44px;
+    height: 44px;
+    border-radius: 13px;
+    font-size: 22px;
+  }
+
+  .collection-content h2 {
+    font-size: 15px;
+  }
+
+  .collection-content p {
+    font-size: 11px;
+  }
+
+  .collection-button {
+    padding: 10px 12px;
+    font-size: 11px;
+  }
+
+  .trending-section {
+    padding: 13px;
+  }
+
+  .trending-number {
+    flex-basis: 44px;
+    width: 44px;
+    height: 44px;
+    font-size: 16px;
+  }
+
+  .trending-scroll-arrow {
+    flex-basis: 32px;
+    width: 32px;
+  }
+
+  .trending-player-shell video {
+    aspect-ratio: 5/4;
+  }
+
+  .trending-time {
+    min-width: 52px;
+  }
+
+  .trending-center-play {
+    width: 64px;
+    height: 64px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header class="topbar">
+  <div class="brand">
+    <div class="brand-mark">▶</div>
+    <span>Video Player</span>
+  </div>
+
+  <button class="share-top" type="button" id="shareButton"
+    aria-label="Bagikan">↗</button>
+</header>
+
+<main>
+
+  <!-- VIDEO UTAMA -->
+
+  <section class="player-shell" id="mainPlayer"
+    aria-label="Pemutar video utama">
+
+    <video id="mainVideo"
+      playsinline
+      preload="metadata"
+      src="https://cdn2.videy.co/GWKfLi201.mp4">
+    </video>
+
+    <div class="video-top-gradient"></div>
+    <div class="video-bottom-gradient"></div>
+
+    <div class="player-badge">HD • Mobile Friendly</div>
+
+    <button class="center-play-btn"
+      type="button"
+      data-action="center-play"
+      aria-label="Putar video">▶</button>
+
+    <div class="continue-overlay" id="continueOverlay">
+      <div class="continue-box">
+
+        <div class="ad-icon">▶</div>
+
+        <h2>Lanjutkan Video</h2>
+
+        <p>
+          Video dijeda sementara. Tekan tombol di bawah jika ingin
+          membuka tautan iklan dan melanjutkan video.
+        </p>
+
+        <a class="ad-button"
+          href="https://www.profitableratecpmnetwork.com/dzth71h9?key=0d1e630d97de4d34d79e6dd18d6a2fe8"
+          target="_blank"
+          rel="noopener noreferrer"
+          data-action="continue-ad">
+          Lanjutkan &amp; Buka Iklan
+        </a>
+
+        <div class="small-note">
+          Tautan dibuka hanya setelah kamu menekan tombol.
+        </div>
+      </div>
+    </div>
+
+    <div class="controls">
+
+      <button class="ctrl" type="button"
+        data-action="play" aria-label="Putar atau jeda">▶</button>
+
+      <div class="progress"
+        data-action="seek"
+        role="slider"
+        aria-label="Posisi video"
+        tabindex="0">
+        <div class="progress-fill"></div>
+      </div>
+
+      <div class="time">0:00 / 0:00</div>
+
+      <button class="ctrl" type="button"
+        data-action="fullscreen" aria-label="Fullscreen">⛶</button>
+
+    </div>
+  </section>
+
+  <!-- INFORMASI VIDEO UTAMA -->
+
+  <section class="info">
+
+    <h1 class="title" id="videoTitle">Video Utama</h1>
+
+    <div class="meta" id="videoDescription">
+      Nikmati video dengan tampilan nyaman di HP maupun desktop.
+    </div>
+
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- NAVIGASI VIDEO UTAMA -->
+
+  <section class="video-navigation">
+
+    <div class="navigation-heading">✨ Pilih Video</div>
+
+    <div class="navigation-description">
+      Pilih nomor video atau geser deretan angka ke kanan untuk
+      melihat video lainnya.
+    </div>
+
+    <div class="video-number-scroller">
+
+      <button class="scroll-arrow"
+        id="scrollLeft"
+        type="button"
+        aria-label="Geser nomor ke kiri"
+        disabled>‹</button>
+
+      <div class="video-numbers"
+        id="videoNumbers"
+        aria-label="Daftar nomor video">
+      </div>
+
+      <button class="scroll-arrow"
+        id="scrollRight"
+        type="button"
+        aria-label="Geser nomor ke kanan">›</button>
+
+    </div>
+
+    <div class="now-playing" id="nowPlaying">
+      Sedang dipilih: Video Utama
+    </div>
+
+  </section>
+
+  <!-- KUMPULAN VIDEO LENGKAP -->
+
+  <section class="collection-card" aria-label="Kumpulan video lengkap">
+
+    <div class="collection-icon" aria-hidden="true">🎬</div>
+
+    <div class="collection-content">
+
+      <h2>🔥 Kumpulan Video Lengkap</h2>
+
+      <p>
+        Temukan video lainnya dalam satu koleksi.
+        Klik tombol di bawah untuk melihat selengkapnya.
+      </p>
+
+      <a
+        class="collection-button"
+        href="https://www.profitableratecpmnetwork.com/dzth71h9?key=0d1e630d97de4d34d79e6dd18d6a2fe8"
+        target="_blank"
+        rel="noopener noreferrer">
+        Lihat Koleksi Video Lengkap ↗
+      </a>
+
+    </div>
+
+  </section>
+
+  <!-- VIDEO TRENDING -->
+
+  <section class="trending-section" id="trendingSection">
+
+    <h2 class="trending-heading">
+      🔥 Video Trending Paling Banyak Ditonton
+    </h2>
+
+    <div class="trending-description">
+      Temukan video yang sedang trending dan paling banyak ditonton.
+      Pilih nomor video untuk melihat koleksi trending lainnya.
+    </div>
+
+    <div class="trending-player-shell" id="trendingPlayer">
+
+      <video
+        id="trendingVideo"
+        playsinline
+        preload="metadata">
+      </video>
+
+      <button
+        type="button"
+        class="trending-center-play"
+        id="trendingCenterPlay"
+        aria-label="Putar video trending">
+        ▶
+      </button>
+
+      <!-- OVERLAY IKLAN TRENDING -->
+
+      <div class="trending-overlay" id="trendingOverlay">
+
+        <div class="trending-overlay-box">
+
+          <div class="ad-icon">▶</div>
+
+          <h3>Lanjutkan Video</h3>
+
+          <p>
+            Video dijeda sementara. Tekan tombol di bawah
+            untuk membuka tautan dan melanjutkan video.
+          </p>
+
+          <a
+            class="trending-ad-button"
+            href="https://www.profitableratecpmnetwork.com/dzth71h9?key=0d1e630d97de4d34d79e6dd18d6a2fe8"
+            target="_blank"
+            rel="noopener noreferrer"
+            id="trendingContinueButton">
+            Lanjutkan &amp; Buka Iklan
+          </a>
+
+          <div class="trending-ad-note">
+            Tautan dibuka hanya setelah tombol ditekan.
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- KONTROL VIDEO TRENDING -->
+
+      <div class="trending-controls">
+
+        <button
+          class="trending-ctrl"
+          id="trendingPlayButton"
+          type="button"
+          aria-label="Putar atau jeda">
+          ▶
+        </button>
+
+        <div
+          class="trending-progress"
+          id="trendingProgress"
+          role="slider"
+          aria-label="Posisi video trending"
+          tabindex="0">
+
+          <div
+            class="trending-progress-fill"
+            id="trendingProgressFill">
+          </div>
+
+        </div>
+
+        <div class="trending-time" id="trendingTime">
+          0:00 / 0:00
+        </div>
+
+        <button
+          class="trending-ctrl"
+          id="trendingFullscreen"
+          type="button"
+          aria-label="Fullscreen">
+          ⛶
+        </button>
+
+      </div>
+
+    </div>
+
+    <!-- JUDUL DAN STATUS DISEMBUNYIKAN DENGAN CSS -->
+
+    <div class="trending-video-title" id="trendingVideoTitle">
+      Trending Video 1
+    </div>
+
+    <div class="trending-video-description" id="trendingVideoDescription">
+      Nikmati video trending pilihan.
+    </div>
+
+    <!-- NOMOR VIDEO TRENDING -->
+
+    <div class="trending-number-heading">
+      ✨ Pilih Video Trending
+    </div>
+
+    <div class="trending-number-scroller">
+
+      <button
+        class="trending-scroll-arrow"
+        id="trendingScrollLeft"
+        type="button"
+        aria-label="Geser ke kiri"
+        disabled>
+        ‹
+      </button>
+
+      <div
+        class="trending-numbers"
+        id="trendingNumbers"
+        aria-label="Daftar video trending">
+      </div>
+
+      <button
+        class="trending-scroll-arrow"
+        id="trendingScrollRight"
+        type="button"
+        aria-label="Geser ke kanan">
+        ›
+      </button>
+
+    </div>
+
+    <div class="trending-now-playing" id="trendingNowPlaying">
+      Sedang dipilih: Trending Video 1
+    </div>
+
+  </section>
+
+  <footer>© 2026 • Video Player</footer>
+
+</main>
+
+<!-- JAVASCRIPT VIDEO UTAMA: DIPERTAHANKAN -->
+
+<script>
+(() => {
+  "use strict";
+
+  const MAIN_SOURCE =
+    "https://cdn2.videy.co/9au9V7wJ1.mp4";
+
+  const videoSources = [
+    "https://cdn2.videy.co/ykf8oVTm1.mp4",
+    "https://cdn2.videy.co/3P0hIbkq1.mp4",
+    "https://cdn2.videy.co/FoAiwOui1.mp4",
+    "https://cdn2.videy.co/yJR4deRG1.mp4",
+    "https://cdn2.videy.co/2WCMgGqN1.mp4",
+    "https://cdn2.videy.co/2otnBByR1.mp4",
+    "https://cdn2.videy.co/JIGxzFjt1.mp4",
+    "https://cdn2.videy.co/ElveqLNc1.mp4",
+    "https://cdn2.videy.co/MPCRvcfJ1.mp4",
+    "https://cdn2.videy.co/wj8JHBF21.mp4",
+    "https://cdn2.videy.co/UOHQRDKV1.mp4",
+    "https://cdn2.videy.co/RSvvO6Z71.mp4",
+    "https://cdn2.videy.co/shFrVutn1.mp4",
+    "https://cdn2.videy.co/UWFeEngW1.mp4",
+    "https://cdn2.videy.co/2wv1ekzl1.mp4"
+  ];
+
+  const GATE_TIMES = [15, 40];
+
+  const shell = document.getElementById("mainPlayer");
+  const video = document.getElementById("mainVideo");
+  const centerBtn = shell.querySelector(".center-play-btn");
+  const playBtn = shell.querySelector('[data-action="play"]');
+  const progress = shell.querySelector(".progress");
+  const progressFill = shell.querySelector(".progress-fill");
+  const timeEl = shell.querySelector(".time");
+  const overlay = document.getElementById("continueOverlay");
+
+  const numbersContainer = document.getElementById("videoNumbers");
+  const scrollLeftButton = document.getElementById("scrollLeft");
+  const scrollRightButton = document.getElementById("scrollRight");
+
+  const videoTitle = document.getElementById("videoTitle");
+  const videoDescription = document.getElementById("videoDescription");
+  const nowPlaying = document.getElementById("nowPlaying");
+
+  let currentSelection = -1;
+  let gateCount = 0;
+  let gateShown = false;
+  let controlsTimer = null;
+  let centerTimer = null;
+
+  videoSources.forEach((source, index) => {
+
+    const button = document.createElement("button");
+
+    button.type = "button";
+    button.className = "video-number";
+    button.dataset.video = String(index);
+    button.textContent = String(index + 1);
+
+    button.setAttribute("aria-pressed", "false");
+
+    button.setAttribute(
+      "aria-label",
+      "Pilih video " + (index + 1)
+    );
+
+    numbersContainer.appendChild(button);
+
+  });
+
+  const numberButtons =
+    numbersContainer.querySelectorAll(".video-number");
+
+  function formatTime(seconds) {
+
+    if (!Number.isFinite(seconds) || seconds < 0) {
+      return "0:00";
+    }
+
+    const minutes = Math.floor(seconds / 60);
+
+    const secs = Math.floor(seconds % 60)
+      .toString()
+      .padStart(2, "0");
+
+    return minutes + ":" + secs;
+
+  }
+
+  function updateScrollArrows() {
+
+    const maxScroll = Math.max(
+      0,
+      numbersContainer.scrollWidth -
+      numbersContainer.clientWidth
+    );
+
+    scrollLeftButton.disabled =
+      numbersContainer.scrollLeft <= 2;
+
+    scrollRightButton.disabled =
+      numbersContainer.scrollLeft >= maxScroll - 2;
+
+  }
+
+  scrollLeftButton.addEventListener("click", () => {
+
+    numbersContainer.scrollBy({
+      left: -180,
+      behavior: "smooth"
+    });
+
+  });
+
+  scrollRightButton.addEventListener("click", () => {
+
+    numbersContainer.scrollBy({
+      left: 180,
+      behavior: "smooth"
+    });
+
+  });
+
+  numbersContainer.addEventListener(
+    "scroll",
+    updateScrollArrows
+  );
+
+  window.addEventListener("resize", updateScrollArrows);
+
+  function showControls() {
+
+    clearTimeout(controlsTimer);
+
+    shell.classList.remove("controls-hidden");
+
+    if (!video.paused && !overlay.classList.contains("show")) {
+
+      controlsTimer = setTimeout(() => {
+
+        if (
+          !video.paused &&
+          !overlay.classList.contains("show")
+        ) {
+
+          shell.classList.add("controls-hidden");
+
+        }
+
+      }, 2200);
+
+    }
+
+  }
+
+  function updateCenter() {
+
+    if (video.paused || video.ended) {
+
+      centerBtn.classList.remove("hidden");
+      centerBtn.textContent = "▶";
+
+    } else {
+
+      centerBtn.classList.add("hidden");
+
+    }
+
+  }
+
+  function resetTriggers() {
+
+    gateCount = 0;
+    gateShown = false;
+
+    overlay.classList.remove("show");
+
+    shell.classList.remove("controls-hidden");
+
+    clearTimeout(controlsTimer);
+    clearTimeout(centerTimer);
+
+  }
+
+  function togglePlay() {
+
+    if (overlay.classList.contains("show")) return;
+
+    if (video.paused) {
+
+      video.play().catch(() => updateCenter());
+
+    } else {
+
+      video.pause();
+
+    }
+
+  }
+
+  function seekTo(clientX) {
+
+    if (
+      !video.duration ||
+      overlay.classList.contains("show")
+    ) return;
+
+    const rect = progress.getBoundingClientRect();
+
+    if (!rect.width) return;
+
+    const pct = Math.max(
+      0,
+      Math.min(1, (clientX - rect.left) / rect.width)
+    );
+
+    video.currentTime = pct * video.duration;
+
+    showControls();
+
+  }
+
+  async function toggleFullscreen() {
+
+    try {
+
+      if (document.fullscreenElement === shell) {
+
+        await document.exitFullscreen();
+
+      } else if (shell.requestFullscreen) {
+
+        await shell.requestFullscreen();
+
+      } else {
+
+        shell.classList.toggle("is-fullscreen");
+
+      }
+
+    } catch (error) {
+
+      shell.classList.toggle("is-fullscreen");
+
+    }
+
+  }
+
+  function selectVideo(index) {
+
+    if (
+      index < -1 ||
+      index >= videoSources.length ||
+      !Number.isInteger(index)
+    ) return;
+
+    video.pause();
+
+    resetTriggers();
+
+    currentSelection = index;
+
+    const isMain = index === -1;
+
+    const source = isMain
+      ? MAIN_SOURCE
+      : videoSources[index];
+
+    const title = isMain
+      ? "Video Utama"
+      : "Video " + (index + 1);
+
+    numberButtons.forEach((button, buttonIndex) => {
+
+      const active = !isMain && buttonIndex === index;
+
+      button.classList.toggle("active", active);
+
+      button.setAttribute(
+        "aria-pressed",
+        String(active)
+      );
+
+    });
+
+    videoTitle.textContent = title;
+
+    videoDescription.textContent = isMain
+      ? "Nikmati video utama dengan tampilan nyaman di HP maupun desktop."
+      : "";
+
+    nowPlaying.textContent =
+      "Video terpilih: " + title +
+      " • Tekan Play untuk menonton";
+
+    video.src = source;
+
+    video.load();
+
+    progressFill.style.width = "0%";
+
+    timeEl.textContent = "0:00 / 0:00";
+
+    centerBtn.classList.remove("hidden");
+
+    centerBtn.textContent = "▶";
+
+    centerBtn.setAttribute("aria-label", "Putar video");
+
+    playBtn.textContent = "▶";
+
+    showControls();
+
+    if (!isMain && numberButtons[index]) {
+
+      numberButtons[index].scrollIntoView({
+        behavior: "smooth",
+        block: "nearest",
+        inline: "nearest"
+      });
+
+    }
+
+    updateScrollArrows();
+
+  }
+
+  centerBtn.addEventListener("click", event => {
+
+    event.stopPropagation();
+
+    togglePlay();
+
+  });
+
+  playBtn.addEventListener("click", togglePlay);
+
+  shell.querySelector('[data-action="fullscreen"]')
+    .addEventListener("click", toggleFullscreen);
+
+  video.addEventListener("click", () => {
+
+    showControls();
+
+    if (!video.paused) {
+
+      centerBtn.classList.remove("hidden");
+
+      centerBtn.textContent = "Ⅱ";
+
+      clearTimeout(centerTimer);
+
+      centerTimer = setTimeout(() => {
+
+        if (!video.paused) {
+          centerBtn.classList.add("hidden");
+        }
+
+      }, 1800);
+
+    } else {
+
+      updateCenter();
+
+    }
+
+  });
+
+  progress.addEventListener("click", event => {
+
+    event.stopPropagation();
+
+    seekTo(event.clientX);
+
+  });
+
+  progress.addEventListener("keydown", event => {
+
+    if (
+      event.key !== "ArrowRight" &&
+      event.key !== "ArrowLeft"
+    ) return;
+
+    event.preventDefault();
+
+    if (
+      !video.duration ||
+      overlay.classList.contains("show")
+    ) return;
+
+    const direction =
+      event.key === "ArrowRight" ? 5 : -5;
+
+    video.currentTime = Math.max(
+      0,
+      Math.min(
+        video.duration,
+        video.currentTime + direction
+      )
+    );
+
+    showControls();
+
+  });
+
+  video.addEventListener("play", () => {
+
+    playBtn.textContent = "Ⅱ";
+
+    updateCenter();
+
+    showControls();
+
+  });
+
+  video.addEventListener("pause", () => {
+
+    playBtn.textContent = "▶";
+
+    clearTimeout(centerTimer);
+
+    updateCenter();
+
+    if (!overlay.classList.contains("show")) {
+      showControls();
+    }
+
+  });
+
+  video.addEventListener("ended", () => {
+
+    updateCenter();
+
+    showControls();
+
+  });
+
+  video.addEventListener("loadedmetadata", () => {
+
+    timeEl.textContent =
+      "0:00 / " + formatTime(video.duration);
+
+  });
+
+  video.addEventListener("timeupdate", () => {
+
+    if (video.duration) {
+
+      progressFill.style.width =
+        (video.currentTime / video.duration * 100) + "%";
+
+      timeEl.textContent =
+        formatTime(video.currentTime) +
+        " / " +
+        formatTime(video.duration);
+
+    }
+
+    if (
+      !gateShown &&
+      gateCount < GATE_TIMES.length &&
+      video.currentTime >= GATE_TIMES[gateCount]
+    ) {
+
+      gateCount++;
+
+      gateShown = true;
+
+      video.pause();
+
+      overlay.classList.add("show");
+
+      shell.classList.remove("controls-hidden");
+
+      clearTimeout(controlsTimer);
+
+      updateCenter();
+
+    }
+
+  });
+
+  overlay.querySelector('[data-action="continue-ad"]')
+    .addEventListener("click", () => {
+
+      overlay.classList.remove("show");
+
+      gateShown = false;
+
+      video.play().catch(() => updateCenter());
+
+    });
+
+  numberButtons.forEach(button => {
+
+    button.addEventListener("click", () => {
+
+      const index = Number(button.dataset.video);
+
+      selectVideo(index);
+
+    });
+
+  });
+
+  document.addEventListener("fullscreenchange", () => {
+
+    const isFullscreen =
+      document.fullscreenElement === shell;
+
+    shell.classList.toggle("is-fullscreen", isFullscreen);
+
+    showControls();
+
+  });
+
+  shell.addEventListener("pointerdown", event => {
+
+    if (event.target.closest("button, .progress, a")) return;
+
+    if (overlay.classList.contains("show")) return;
+
+    showControls();
+
+  });
+
+  document.getElementById("shareButton")
+    .addEventListener("click", async () => {
+
+      try {
+
+        if (navigator.share) {
+
+          await navigator.share({
+            title: document.title,
+            text: "Tonton video ini",
+            url: location.href
+          });
+
+        } else if (
+          navigator.clipboard &&
+          navigator.clipboard.writeText
+        ) {
+
+          await navigator.clipboard.writeText(location.href);
+
+          alert("Link halaman berhasil disalin");
+
+        } else {
+
+          prompt("Salin link halaman ini:", location.href);
+
+        }
+
+      } catch (error) {
+
+        // Berbagi dibatalkan atau tidak tersedia.
+
+      }
+
+    });
+
+  updateCenter();
+
+  requestAnimationFrame(updateScrollArrows);
+
+})();
+</script>
+
+<!-- JAVASCRIPT VIDEO TRENDING: PLAY/PAUSE TENGAH DISESUAIKAN -->
+
+<script>
+(() => {
+  "use strict";
+
+  /*
+    DAFTAR VIDEO TRENDING.
+    TAMBAHKAN LINK BARU DI BAWAH INI.
+    NOMOR VIDEO AKAN DIBUAT OTOMATIS.
+  */
+
+  const TRENDING_SOURCES = [
+
+    "https://cdn2.videy.co/Z42u3hqk1.mp4",
+    "https://cdn2.videy.co/tR269RaD1.mp4",
+    "https://cdn2.videy.co/EGKmje6t1.mp4",
+    "https://cdn2.videy.co/dcvIGnYr1.mp4",
+    "https://cdn2.videy.co/bCHom5kN1.mp4",
+    "https://cdn2.videy.co/LGDnuSQI1.mp4"
+
+  ];
+
+  const TRENDING_GATE_TIMES = [15, 40];
+
+  const player = document.getElementById("trendingPlayer");
+  const video = document.getElementById("trendingVideo");
+  const centerPlay = document.getElementById("trendingCenterPlay");
+  const playButton = document.getElementById("trendingPlayButton");
+  const progress = document.getElementById("trendingProgress");
+  const progressFill = document.getElementById("trendingProgressFill");
+  const timeDisplay = document.getElementById("trendingTime");
+  const overlay = document.getElementById("trendingOverlay");
+  const continueButton = document.getElementById("trendingContinueButton");
+  const numbers = document.getElementById("trendingNumbers");
+  const title = document.getElementById("trendingVideoTitle");
+  const description = document.getElementById("trendingVideoDescription");
+  const scrollLeft = document.getElementById("trendingScrollLeft");
+  const scrollRight = document.getElementById("trendingScrollRight");
+
+  let gateIndex = 0;
+  let gateShown = false;
+  let controlsTimer = null;
+  let centerTimer = null;
+
+  function formatTime(seconds) {
+
+    if (!Number.isFinite(seconds) || seconds < 0) {
+      return "0:00";
+    }
+
+    const minutes = Math.floor(seconds / 60);
+
+    const secs = Math.floor(seconds % 60)
+      .toString()
+      .padStart(2, "0");
+
+    return minutes + ":" + secs;
+
+  }
+
+  /* MEMBUAT NOMOR TRENDING OTOMATIS */
+
+  TRENDING_SOURCES.forEach((source, index) => {
+
+    const button = document.createElement("button");
+
+    button.type = "button";
+    button.className = "trending-number";
+    button.textContent = String(index + 1);
+    button.dataset.index = String(index);
+
+    button.setAttribute(
+      "aria-label",
+      "Pilih Trending Video " + (index + 1)
+    );
+
+    button.setAttribute("aria-pressed", "false");
+
+    numbers.appendChild(button);
+
+  });
+
+  const numberButtons =
+    numbers.querySelectorAll(".trending-number");
+
+  /* PANAH GESER NOMOR */
+
+  function updateArrows() {
+
+    const maxScroll = Math.max(
+      0,
+      numbers.scrollWidth - numbers.clientWidth
+    );
+
+    scrollLeft.disabled = numbers.scrollLeft <= 2;
+
+    scrollRight.disabled =
+      numbers.scrollLeft >= maxScroll - 2;
+
+  }
+
+  scrollLeft.addEventListener("click", () => {
+
+    numbers.scrollBy({
+      left: -180,
+      behavior: "smooth"
+    });
+
+  });
+
+  scrollRight.addEventListener("click", () => {
+
+    numbers.scrollBy({
+      left: 180,
+      behavior: "smooth"
+    });
+
+  });
+
+  numbers.addEventListener("scroll", updateArrows);
+
+  window.addEventListener("resize", updateArrows);
+
+  /* TAMPILKAN DAN SEMBUNYIKAN KONTROL TRENDING */
+
+  function showControls() {
+
+    clearTimeout(controlsTimer);
+
+    player.classList.remove("controls-hidden");
+
+    if (!video.paused && !overlay.classList.contains("show")) {
+
+      controlsTimer = setTimeout(() => {
+
+        if (
+          !video.paused &&
+          !overlay.classList.contains("show")
+        ) {
+
+          player.classList.add("controls-hidden");
+
+        }
+
+      }, 2200);
+
+    }
+
+  }
+
+  /* IKON PLAY/PAUSE DI TENGAH */
+
+  function updateCenter() {
+
+    if (video.paused || video.ended) {
+
+      centerPlay.classList.remove("hidden");
+      centerPlay.textContent = "▶";
+      centerPlay.setAttribute("aria-label", "Putar video trending");
+
+    } else {
+
+      centerPlay.classList.add("hidden");
+
+    }
+
+  }
+
+  function togglePlay() {
+
+    if (overlay.classList.contains("show")) return;
+
+    if (video.paused) {
+
+      video.play().catch(() => updateCenter());
+
+    } else {
+
+      video.pause();
+
+    }
+
+  }
+
+  centerPlay.addEventListener("click", event => {
+
+    event.stopPropagation();
+
+    togglePlay();
+
+  });
+
+  playButton.addEventListener("click", togglePlay);
+
+  /*
+    INI BAGIAN UTAMA YANG DIPERBAIKI:
+    SAAT VIDEO TRENDING SEDANG BERJALAN DAN LAYAR DITEKAN,
+    IKON PAUSE MUNCUL DI TENGAH SELAMA 1,8 DETIK.
+  */
+
+  video.addEventListener("click", () => {
+
+    showControls();
+
+    if (!video.paused) {
+
+      centerPlay.classList.remove("hidden");
+
+      centerPlay.textContent = "Ⅱ";
+
+      centerPlay.setAttribute(
+        "aria-label",
+        "Jeda video trending"
+      );
+
+      clearTimeout(centerTimer);
+
+      centerTimer = setTimeout(() => {
+
+        if (!video.paused) {
+          centerPlay.classList.add("hidden");
+        }
+
+      }, 1800);
+
+    } else {
+
+      updateCenter();
+
+    }
+
+  });
+
+  video.addEventListener("play", () => {
+
+    playButton.textContent = "Ⅱ";
+
+    updateCenter();
+
+    showControls();
+
+  });
+
+  video.addEventListener("pause", () => {
+
+    playButton.textContent = "▶";
+
+    clearTimeout(centerTimer);
+
+    updateCenter();
+
+    if (!overlay.classList.contains("show")) {
+      showControls();
+    }
+
+  });
+
+  video.addEventListener("ended", () => {
+
+    updateCenter();
+
+    showControls();
+
+  });
+
+  /* FULLSCREEN TRENDING */
+
+  async function toggleFullscreen() {
+
+    try {
+
+      if (document.fullscreenElement === player) {
+
+        await document.exitFullscreen();
+
+      } else if (player.requestFullscreen) {
+
+        await player.requestFullscreen();
+
+      } else {
+
+        player.classList.toggle("is-fullscreen");
+
+      }
+
+    } catch (error) {
+
+      player.classList.toggle("is-fullscreen");
+
+    }
+
+  }
+
+  document
+    .getElementById("trendingFullscreen")
+    .addEventListener("click", toggleFullscreen);
+
+  document.addEventListener("fullscreenchange", () => {
+
+    const isFullscreen =
+      document.fullscreenElement === player;
+
+    player.classList.toggle("is-fullscreen", isFullscreen);
+
+    showControls();
+
+  });
+
+  /* PROGRESS BAR TRENDING */
+
+  function seekVideo(clientX) {
+
+    if (
+      !video.duration ||
+      overlay.classList.contains("show")
+    ) return;
+
+    const rect = progress.getBoundingClientRect();
+
+    if (!rect.width) return;
+
+    const percent = Math.max(
+      0,
+      Math.min(1, (clientX - rect.left) / rect.width)
+    );
+
+    video.currentTime = percent * video.duration;
+
+    showControls();
+
+  }
+
+  progress.addEventListener("click", event => {
+
+    event.stopPropagation();
+
+    seekVideo(event.clientX);
+
+  });
+
+  progress.addEventListener("keydown", event => {
+
+    if (
+      event.key !== "ArrowRight" &&
+      event.key !== "ArrowLeft"
+    ) return;
+
+    event.preventDefault();
+
+    if (
+      !video.duration ||
+      overlay.classList.contains("show")
+    ) return;
+
+    const change =
+      event.key === "ArrowRight" ? 5 : -5;
+
+    video.currentTime = Math.max(
+      0,
+      Math.min(
+        video.duration,
+        video.currentTime + change
+      )
+    );
+
+    showControls();
+
+  });
+
+  video.addEventListener("loadedmetadata", () => {
+
+    timeDisplay.textContent =
+      "0:00 / " + formatTime(video.duration);
+
+  });
+
+  video.addEventListener("timeupdate", () => {
+
+    if (video.duration) {
+
+      const percent =
+        video.currentTime / video.duration * 100;
+
+      progressFill.style.width = percent + "%";
+
+      timeDisplay.textContent =
+        formatTime(video.currentTime) +
+        " / " +
+        formatTime(video.duration);
+
+    }
+
+    /* GATE IKLAN TRENDING PADA DETIK 15 DAN 40 */
+
+    if (
+      !gateShown &&
+      gateIndex < TRENDING_GATE_TIMES.length &&
+      video.currentTime >= TRENDING_GATE_TIMES[gateIndex]
+    ) {
+
+      gateIndex++;
+
+      gateShown = true;
+
+      video.pause();
+
+      overlay.classList.add("show");
+
+      player.classList.remove("controls-hidden");
+
+      clearTimeout(controlsTimer);
+
+      updateCenter();
+
+    }
+
+  });
+
+  /* LANJUTKAN VIDEO SETELAH TOMBOL IKLAN DITEKAN */
+
+  continueButton.addEventListener("click", () => {
+
+    overlay.classList.remove("show");
+
+    gateShown = false;
+
+    video.play().catch(() => updateCenter());
+
+  });
+
+  /* MEMILIH VIDEO TRENDING */
+
+  function selectTrending(index) {
+
+    if (
+      !Number.isInteger(index) ||
+      index < 0 ||
+      index >= TRENDING_SOURCES.length
+    ) return;
+
+    video.pause();
+
+    clearTimeout(controlsTimer);
+    clearTimeout(centerTimer);
+
+    player.classList.remove("controls-hidden");
+
+    gateIndex = 0;
+    gateShown = false;
+
+    overlay.classList.remove("show");
+
+    video.src = TRENDING_SOURCES[index];
+
+    video.load();
+
+    // Judul dan status tetap diperbarui,
+    // tetapi disembunyikan dari tampilan halaman.
+
+    title.textContent =
+      "Trending Video " + (index + 1);
+
+    description.textContent =
+      "Kamu sedang menonton Trending Video " +
+      (index + 1) + ".";
+
+    // Nomor aktif diberi warna.
+
+    numberButtons.forEach((button, buttonIndex) => {
+
+      const active = buttonIndex === index;
+
+      button.classList.toggle("active", active);
+
+      button.setAttribute(
+        "aria-pressed",
+        String(active)
+      );
+
+    });
+
+    // Reset progress dan tombol.
+
+    progressFill.style.width = "0%";
+
+    timeDisplay.textContent = "0:00 / 0:00";
+
+    playButton.textContent = "▶";
+
+    centerPlay.textContent = "▶";
+
+    centerPlay.classList.remove("hidden");
+
+    centerPlay.setAttribute(
+      "aria-label",
+      "Putar video trending"
+    );
+
+    // Geser nomor aktif agar terlihat.
+
+    numberButtons[index].scrollIntoView({
+      behavior: "smooth",
+      block: "nearest",
+      inline: "nearest"
+    });
+
+    updateArrows();
+
+    // Video tidak autoplay.
+
+  }
+
+  numberButtons.forEach(button => {
+
+    button.addEventListener("click", () => {
+
+      selectTrending(Number(button.dataset.index));
+
+    });
+
+  });
+
+  /* KLIK AREA PLAYER UNTUK MEMUNCULKAN KONTROL */
+
+  player.addEventListener("pointerdown", event => {
+
+    if (event.target.closest("button, .trending-progress, a")) {
+      return;
+    }
+
+    if (overlay.classList.contains("show")) return;
+
+    showControls();
+
+  });
+
+  // Muat video Trending pertama saat halaman dibuka.
+
+  selectTrending(0);
+
+  requestAnimationFrame(updateArrows);
+
+})();
+</script>
+
+<!-- HISTATS -->
+
+<script>
+var _Hasync = _Hasync || [];
+
+_Hasync.push([
+  'Histats.start',
+  '1,5043495,4,0,0,0,00010000'
+]);
+
+_Hasync.push(['Histats.fasi', '1']);
+
+_Hasync.push(['Histats.track_hits', '']);
+
+(function() {
+
+  var hs = document.createElement('script');
+
+  hs.type = 'text/javascript';
+
+  hs.async = true;
+
+  hs.src = ('https:' == document.location.protocol
+    ? 'https://' : 'http:') + 's10.histats.com/js15_as.js';
+
+  (document.getElementsByTagName('head')[0] ||
+   document.getElementsByTagName('body')[0]).appendChild(hs);
+
+})();
+</script>
+
+<noscript>
+  <a href="/" target="_blank" rel="noopener noreferrer">
+    <img src="https://sstatic1.histats.com/0.gif?5043495&101"
+      alt="web tracker" border="0">
+  </a>
+</noscript>
+
+<!-- HISTATS END -->
+
+<!-- LINK SOCIAL BAR -->
+
+<script src="https://pl31742207.profitableratecpmnetwork.com/fe/1f/46/fe1f460d4528e145b3ec7bc27f62a598.js"></script>
+
+</body>
+</html>
