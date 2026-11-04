@@ -5,20 +5,20 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="theme-color" content="#070812">
-<title>▶️KOLEKSI</title>
+<title>▶️VIDEO TRENDING</title>
 <meta name="description" content="Tonton video terbaru dan video lainnya.">
 
 <meta property="og:type" content="website">
-<meta property="og:title" content="▶️KOLEKSI">
+<meta property="og:title" content="▶️VIDEO TRENDING">
 <meta property="og:description" content="Tonton video terbaru dan video lainnya.">
 <meta property="og:image" content="https://jpcdn.it/img/78cdf523e00fb268089737a9a79c0a76.jpg">
-<meta property="og:image:alt" content="▶️KOLEKSI">
+<meta property="og:image:alt" content="▶️VIDEO TRENDING">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:site_name" content="▶️KOLEKSI">
+<meta property="og:site_name" content="▶️VIDEO TRENDING">
 
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="▶️KOLEKSI">
+<meta name="twitter:title" content="▶️VIDEO TRENDING">
 <meta name="twitter:description" content="Tonton video terbaru dan video lainnya.">
 <meta name="twitter:image" content="https://jpcdn.it/img/78cdf523e00fb268089737a9a79c0a76.jpg">
 
@@ -87,6 +87,40 @@ button {
   display: grid;
   place-items: center;
   background: linear-gradient(135deg,var(--purple),var(--blue));
+}
+
+.topbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.language-switch {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: rgba(255,255,255,.05);
+}
+
+.lang-btn {
+  min-width: 35px;
+  height: 30px;
+  padding: 0 8px;
+  border: 0;
+  border-radius: 8px;
+  color: #c4c8d8;
+  background: transparent;
+  font-size: 11px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.lang-btn.active {
+  color: #fff;
+  background: linear-gradient(135deg,var(--purple),#4f46e5,var(--blue));
 }
 
 .share-top {
@@ -565,8 +599,6 @@ video {
   background: #000;
 }
 
-/* TOMBOL TENGAH TRENDING */
-
 .trending-center-play {
   position: absolute;
   left: 50%;
@@ -591,8 +623,6 @@ video {
   opacity: 0;
   pointer-events: none;
 }
-
-/* KONTROL TRENDING */
 
 .trending-controls {
   position: absolute;
@@ -676,8 +706,6 @@ video {
   bottom: 18px;
 }
 
-/* SEMBUNYIKAN JUDUL DAN STATUS VIDEO TRENDING */
-
 .trending-video-title,
 .trending-video-description,
 .trending-now-playing {
@@ -751,8 +779,6 @@ video {
   cursor: default;
 }
 
-/* OVERLAY IKLAN TRENDING */
-
 .trending-overlay {
   position: absolute;
   inset: 0;
@@ -817,7 +843,6 @@ footer {
 /* RESPONSIVE */
 
 @media(max-width:700px) {
-
   .topbar {
     height: 58px;
     padding: 0 12px;
@@ -943,6 +968,11 @@ footer {
     width: 64px;
     height: 64px;
   }
+
+  .lang-btn {
+    min-width: 32px;
+    padding: 0 6px;
+  }
 }
 </style>
 </head>
@@ -955,8 +985,15 @@ footer {
     <span>Video Player</span>
   </div>
 
-  <button class="share-top" type="button" id="shareButton"
-    aria-label="Bagikan">↗</button>
+  <div class="topbar-actions">
+    <div class="language-switch" aria-label="Pilih bahasa">
+      <button class="lang-btn active" type="button" data-lang="id">ID</button>
+      <button class="lang-btn" type="button" data-lang="en">EN</button>
+    </div>
+
+    <button class="share-top" type="button" id="shareButton"
+      aria-label="Bagikan">↗</button>
+  </div>
 </header>
 
 <main>
@@ -975,7 +1012,7 @@ footer {
     <div class="video-top-gradient"></div>
     <div class="video-bottom-gradient"></div>
 
-    <div class="player-badge">HD • Mobile Friendly</div>
+    <div class="player-badge" data-i18n="badge">HD • Mobile Friendly</div>
 
     <button class="center-play-btn"
       type="button"
@@ -984,12 +1021,9 @@ footer {
 
     <div class="continue-overlay" id="continueOverlay">
       <div class="continue-box">
-
         <div class="ad-icon">▶</div>
-
-        <h2>Lanjutkan Video</h2>
-
-        <p>
+        <h2 data-i18n="continueTitle">Lanjutkan Video</h2>
+        <p data-i18n="continueDescription">
           Video dijeda sementara. Tekan tombol di bawah jika ingin
           membuka tautan iklan dan melanjutkan video.
         </p>
@@ -998,18 +1032,18 @@ footer {
           href="https://www.profitableratecpmnetwork.com/dzth71h9?key=0d1e630d97de4d34d79e6dd18d6a2fe8"
           target="_blank"
           rel="noopener noreferrer"
-          data-action="continue-ad">
+          data-action="continue-ad"
+          data-i18n="continueButton">
           Lanjutkan &amp; Buka Iklan
         </a>
 
-        <div class="small-note">
+        <div class="small-note" data-i18n="adNote">
           Tautan dibuka hanya setelah kamu menekan tombol.
         </div>
       </div>
     </div>
 
     <div class="controls">
-
       <button class="ctrl" type="button"
         data-action="play" aria-label="Putar atau jeda">▶</button>
 
@@ -1025,20 +1059,16 @@ footer {
 
       <button class="ctrl" type="button"
         data-action="fullscreen" aria-label="Fullscreen">⛶</button>
-
     </div>
   </section>
 
   <!-- INFORMASI VIDEO UTAMA -->
 
   <section class="info">
-
     <h1 class="title" id="videoTitle">Video Utama</h1>
-
     <div class="meta" id="videoDescription">
       Nikmati video dengan tampilan nyaman di HP maupun desktop.
     </div>
-
   </section>
 
   <div class="divider"></div>
@@ -1046,16 +1076,14 @@ footer {
   <!-- NAVIGASI VIDEO UTAMA -->
 
   <section class="video-navigation">
+    <div class="navigation-heading" data-i18n="chooseVideo">✨ Pilih Video</div>
 
-    <div class="navigation-heading">✨ Pilih Video</div>
-
-    <div class="navigation-description">
+    <div class="navigation-description" data-i18n="chooseVideoDescription">
       Pilih nomor video atau geser deretan angka ke kanan untuk
       melihat video lainnya.
     </div>
 
     <div class="video-number-scroller">
-
       <button class="scroll-arrow"
         id="scrollLeft"
         type="button"
@@ -1064,153 +1092,114 @@ footer {
 
       <div class="video-numbers"
         id="videoNumbers"
-        aria-label="Daftar nomor video">
-      </div>
+        aria-label="Daftar nomor video"></div>
 
       <button class="scroll-arrow"
         id="scrollRight"
         type="button"
         aria-label="Geser nomor ke kanan">›</button>
-
     </div>
 
     <div class="now-playing" id="nowPlaying">
       Sedang dipilih: Video Utama
     </div>
-
   </section>
 
   <!-- KUMPULAN VIDEO LENGKAP -->
 
   <section class="collection-card" aria-label="Kumpulan video lengkap">
-
     <div class="collection-icon" aria-hidden="true">🎬</div>
 
     <div class="collection-content">
+      <h2 data-i18n="collectionTitle">🔥 Kumpulan Video Lengkap</h2>
 
-      <h2>🔥 Kumpulan Video Lengkap</h2>
-
-      <p>
+      <p data-i18n="collectionDescription">
         Temukan video lainnya dalam satu koleksi.
         Klik tombol di bawah untuk melihat selengkapnya.
       </p>
 
-      <a
-        class="collection-button"
+      <a class="collection-button"
         href="https://www.profitableratecpmnetwork.com/dzth71h9?key=0d1e630d97de4d34d79e6dd18d6a2fe8"
         target="_blank"
-        rel="noopener noreferrer">
+        rel="noopener noreferrer"
+        data-i18n="collectionButton">
         Lihat Koleksi Video Lengkap ↗
       </a>
-
     </div>
-
   </section>
 
   <!-- VIDEO TRENDING -->
 
   <section class="trending-section" id="trendingSection">
-
-    <h2 class="trending-heading">
+    <h2 class="trending-heading" data-i18n="trendingTitle">
       🔥 Video Trending Paling Banyak Ditonton
     </h2>
 
-    <div class="trending-description">
+    <div class="trending-description" data-i18n="trendingDescription">
       Temukan video yang sedang trending dan paling banyak ditonton.
       Pilih nomor video untuk melihat koleksi trending lainnya.
     </div>
 
     <div class="trending-player-shell" id="trendingPlayer">
+      <video id="trendingVideo" playsinline preload="metadata"></video>
 
-      <video
-        id="trendingVideo"
-        playsinline
-        preload="metadata">
-      </video>
-
-      <button
-        type="button"
+      <button type="button"
         class="trending-center-play"
         id="trendingCenterPlay"
-        aria-label="Putar video trending">
-        ▶
-      </button>
+        aria-label="Putar video trending">▶</button>
 
       <!-- OVERLAY IKLAN TRENDING -->
 
       <div class="trending-overlay" id="trendingOverlay">
-
         <div class="trending-overlay-box">
-
           <div class="ad-icon">▶</div>
+          <h3 data-i18n="continueTitle">Lanjutkan Video</h3>
 
-          <h3>Lanjutkan Video</h3>
-
-          <p>
+          <p data-i18n="trendingOverlayDescription">
             Video dijeda sementara. Tekan tombol di bawah
             untuk membuka tautan dan melanjutkan video.
           </p>
 
-          <a
-            class="trending-ad-button"
+          <a class="trending-ad-button"
             href="https://www.profitableratecpmnetwork.com/dzth71h9?key=0d1e630d97de4d34d79e6dd18d6a2fe8"
             target="_blank"
             rel="noopener noreferrer"
-            id="trendingContinueButton">
+            id="trendingContinueButton"
+            data-i18n="continueButton">
             Lanjutkan &amp; Buka Iklan
           </a>
 
-          <div class="trending-ad-note">
-            Tautan dibuka hanya setelah tombol ditekan.
+          <div class="trending-ad-note" data-i18n="adNote">
+            Tautan dibuka hanya setelah kamu menekan tombol.
           </div>
-
         </div>
-
       </div>
 
       <!-- KONTROL VIDEO TRENDING -->
 
       <div class="trending-controls">
-
-        <button
-          class="trending-ctrl"
+        <button class="trending-ctrl"
           id="trendingPlayButton"
           type="button"
-          aria-label="Putar atau jeda">
-          ▶
-        </button>
+          aria-label="Putar atau jeda">▶</button>
 
-        <div
-          class="trending-progress"
+        <div class="trending-progress"
           id="trendingProgress"
           role="slider"
           aria-label="Posisi video trending"
           tabindex="0">
-
-          <div
-            class="trending-progress-fill"
-            id="trendingProgressFill">
-          </div>
-
+          <div class="trending-progress-fill"
+            id="trendingProgressFill"></div>
         </div>
 
-        <div class="trending-time" id="trendingTime">
-          0:00 / 0:00
-        </div>
+        <div class="trending-time" id="trendingTime">0:00 / 0:00</div>
 
-        <button
-          class="trending-ctrl"
+        <button class="trending-ctrl"
           id="trendingFullscreen"
           type="button"
-          aria-label="Fullscreen">
-          ⛶
-        </button>
-
+          aria-label="Fullscreen">⛶</button>
       </div>
-
     </div>
-
-    <!-- JUDUL DAN STATUS DISEMBUNYIKAN DENGAN CSS -->
 
     <div class="trending-video-title" id="trendingVideoTitle">
       Trending Video 1
@@ -1220,57 +1209,43 @@ footer {
       Nikmati video trending pilihan.
     </div>
 
-    <!-- NOMOR VIDEO TRENDING -->
-
-    <div class="trending-number-heading">
+    <div class="trending-number-heading" data-i18n="chooseTrending">
       ✨ Pilih Video Trending
     </div>
 
     <div class="trending-number-scroller">
-
-      <button
-        class="trending-scroll-arrow"
+      <button class="trending-scroll-arrow"
         id="trendingScrollLeft"
         type="button"
         aria-label="Geser ke kiri"
-        disabled>
-        ‹
-      </button>
+        disabled>‹</button>
 
-      <div
-        class="trending-numbers"
+      <div class="trending-numbers"
         id="trendingNumbers"
-        aria-label="Daftar video trending">
-      </div>
+        aria-label="Daftar video trending"></div>
 
-      <button
-        class="trending-scroll-arrow"
+      <button class="trending-scroll-arrow"
         id="trendingScrollRight"
         type="button"
-        aria-label="Geser ke kanan">
-        ›
-      </button>
-
+        aria-label="Geser ke kanan">›</button>
     </div>
 
     <div class="trending-now-playing" id="trendingNowPlaying">
       Sedang dipilih: Trending Video 1
     </div>
-
   </section>
 
-  <footer>© 2026 • Video Player</footer>
+  <footer data-i18n="footer">© 2026 • Video Player</footer>
 
 </main>
 
-<!-- JAVASCRIPT VIDEO UTAMA: DIPERTAHANKAN -->
+<!-- JAVASCRIPT VIDEO UTAMA -->
 
 <script>
 (() => {
   "use strict";
 
-  const MAIN_SOURCE =
-    "https://cdn2.videy.co/9au9V7wJ1.mp4";
+  const MAIN_SOURCE = "https://cdn2.videy.co/9au9V7wJ1.mp4";
 
   const videoSources = [
     "https://cdn2.videy.co/ykf8oVTm1.mp4",
@@ -1316,238 +1291,125 @@ footer {
   let centerTimer = null;
 
   videoSources.forEach((source, index) => {
-
     const button = document.createElement("button");
-
     button.type = "button";
     button.className = "video-number";
     button.dataset.video = String(index);
     button.textContent = String(index + 1);
-
     button.setAttribute("aria-pressed", "false");
-
-    button.setAttribute(
-      "aria-label",
-      "Pilih video " + (index + 1)
-    );
-
+    button.setAttribute("aria-label", "Pilih video " + (index + 1));
     numbersContainer.appendChild(button);
-
   });
 
-  const numberButtons =
-    numbersContainer.querySelectorAll(".video-number");
+  const numberButtons = numbersContainer.querySelectorAll(".video-number");
 
   function formatTime(seconds) {
-
-    if (!Number.isFinite(seconds) || seconds < 0) {
-      return "0:00";
-    }
+    if (!Number.isFinite(seconds) || seconds < 0) return "0:00";
 
     const minutes = Math.floor(seconds / 60);
-
-    const secs = Math.floor(seconds % 60)
-      .toString()
-      .padStart(2, "0");
+    const secs = Math.floor(seconds % 60).toString().padStart(2, "0");
 
     return minutes + ":" + secs;
-
   }
 
   function updateScrollArrows() {
-
-    const maxScroll = Math.max(
-      0,
-      numbersContainer.scrollWidth -
-      numbersContainer.clientWidth
-    );
-
-    scrollLeftButton.disabled =
-      numbersContainer.scrollLeft <= 2;
-
-    scrollRightButton.disabled =
-      numbersContainer.scrollLeft >= maxScroll - 2;
-
+    const maxScroll = Math.max(0, numbersContainer.scrollWidth - numbersContainer.clientWidth);
+    scrollLeftButton.disabled = numbersContainer.scrollLeft <= 2;
+    scrollRightButton.disabled = numbersContainer.scrollLeft >= maxScroll - 2;
   }
 
   scrollLeftButton.addEventListener("click", () => {
-
-    numbersContainer.scrollBy({
-      left: -180,
-      behavior: "smooth"
-    });
-
+    numbersContainer.scrollBy({ left: -180, behavior: "smooth" });
   });
 
   scrollRightButton.addEventListener("click", () => {
-
-    numbersContainer.scrollBy({
-      left: 180,
-      behavior: "smooth"
-    });
-
+    numbersContainer.scrollBy({ left: 180, behavior: "smooth" });
   });
 
-  numbersContainer.addEventListener(
-    "scroll",
-    updateScrollArrows
-  );
-
+  numbersContainer.addEventListener("scroll", updateScrollArrows);
   window.addEventListener("resize", updateScrollArrows);
 
   function showControls() {
-
     clearTimeout(controlsTimer);
-
     shell.classList.remove("controls-hidden");
 
     if (!video.paused && !overlay.classList.contains("show")) {
-
       controlsTimer = setTimeout(() => {
-
-        if (
-          !video.paused &&
-          !overlay.classList.contains("show")
-        ) {
-
+        if (!video.paused && !overlay.classList.contains("show")) {
           shell.classList.add("controls-hidden");
-
         }
-
       }, 2200);
-
     }
-
   }
 
   function updateCenter() {
-
     if (video.paused || video.ended) {
-
       centerBtn.classList.remove("hidden");
       centerBtn.textContent = "▶";
-
     } else {
-
       centerBtn.classList.add("hidden");
-
     }
-
   }
 
   function resetTriggers() {
-
     gateCount = 0;
     gateShown = false;
-
     overlay.classList.remove("show");
-
     shell.classList.remove("controls-hidden");
-
     clearTimeout(controlsTimer);
     clearTimeout(centerTimer);
-
   }
 
   function togglePlay() {
-
     if (overlay.classList.contains("show")) return;
 
     if (video.paused) {
-
       video.play().catch(() => updateCenter());
-
     } else {
-
       video.pause();
-
     }
-
   }
 
   function seekTo(clientX) {
-
-    if (
-      !video.duration ||
-      overlay.classList.contains("show")
-    ) return;
+    if (!video.duration || overlay.classList.contains("show")) return;
 
     const rect = progress.getBoundingClientRect();
-
     if (!rect.width) return;
 
-    const pct = Math.max(
-      0,
-      Math.min(1, (clientX - rect.left) / rect.width)
-    );
-
+    const pct = Math.max(0, Math.min(1, (clientX - rect.left) / rect.width));
     video.currentTime = pct * video.duration;
-
     showControls();
-
   }
 
   async function toggleFullscreen() {
-
     try {
-
       if (document.fullscreenElement === shell) {
-
         await document.exitFullscreen();
-
       } else if (shell.requestFullscreen) {
-
         await shell.requestFullscreen();
-
       } else {
-
         shell.classList.toggle("is-fullscreen");
-
       }
-
     } catch (error) {
-
       shell.classList.toggle("is-fullscreen");
-
     }
-
   }
 
   function selectVideo(index) {
-
-    if (
-      index < -1 ||
-      index >= videoSources.length ||
-      !Number.isInteger(index)
-    ) return;
+    if (index < -1 || index >= videoSources.length || !Number.isInteger(index)) return;
 
     video.pause();
-
     resetTriggers();
-
     currentSelection = index;
 
     const isMain = index === -1;
-
-    const source = isMain
-      ? MAIN_SOURCE
-      : videoSources[index];
-
-    const title = isMain
-      ? "Video Utama"
-      : "Video " + (index + 1);
+    const source = isMain ? MAIN_SOURCE : videoSources[index];
+    const title = isMain ? "Video Utama" : "Video " + (index + 1);
 
     numberButtons.forEach((button, buttonIndex) => {
-
       const active = !isMain && buttonIndex === index;
-
       button.classList.toggle("active", active);
-
-      button.setAttribute(
-        "aria-pressed",
-        String(active)
-      );
-
+      button.setAttribute("aria-pressed", String(active));
     });
 
     videoTitle.textContent = title;
@@ -1557,47 +1419,38 @@ footer {
       : "";
 
     nowPlaying.textContent =
-      "Video terpilih: " + title +
-      " • Tekan Play untuk menonton";
+      "Video terpilih: " + title + " • Tekan Play untuk menonton";
 
     video.src = source;
-
     video.load();
 
     progressFill.style.width = "0%";
-
     timeEl.textContent = "0:00 / 0:00";
-
     centerBtn.classList.remove("hidden");
-
     centerBtn.textContent = "▶";
-
     centerBtn.setAttribute("aria-label", "Putar video");
-
     playBtn.textContent = "▶";
 
     showControls();
 
     if (!isMain && numberButtons[index]) {
-
       numberButtons[index].scrollIntoView({
         behavior: "smooth",
         block: "nearest",
         inline: "nearest"
       });
-
     }
 
     updateScrollArrows();
 
+    if (window.applyPageLanguage) {
+      window.applyPageLanguage();
+    }
   }
 
   centerBtn.addEventListener("click", event => {
-
     event.stopPropagation();
-
     togglePlay();
-
   });
 
   playBtn.addEventListener("click", togglePlay);
@@ -1606,121 +1459,71 @@ footer {
     .addEventListener("click", toggleFullscreen);
 
   video.addEventListener("click", () => {
-
     showControls();
 
     if (!video.paused) {
-
       centerBtn.classList.remove("hidden");
-
       centerBtn.textContent = "Ⅱ";
-
       clearTimeout(centerTimer);
 
       centerTimer = setTimeout(() => {
-
-        if (!video.paused) {
-          centerBtn.classList.add("hidden");
-        }
-
+        if (!video.paused) centerBtn.classList.add("hidden");
       }, 1800);
-
     } else {
-
       updateCenter();
-
     }
-
   });
 
   progress.addEventListener("click", event => {
-
     event.stopPropagation();
-
     seekTo(event.clientX);
-
   });
 
   progress.addEventListener("keydown", event => {
-
-    if (
-      event.key !== "ArrowRight" &&
-      event.key !== "ArrowLeft"
-    ) return;
-
+    if (event.key !== "ArrowRight" && event.key !== "ArrowLeft") return;
     event.preventDefault();
 
-    if (
-      !video.duration ||
-      overlay.classList.contains("show")
-    ) return;
+    if (!video.duration || overlay.classList.contains("show")) return;
 
-    const direction =
-      event.key === "ArrowRight" ? 5 : -5;
+    const direction = event.key === "ArrowRight" ? 5 : -5;
 
     video.currentTime = Math.max(
       0,
-      Math.min(
-        video.duration,
-        video.currentTime + direction
-      )
+      Math.min(video.duration, video.currentTime + direction)
     );
 
     showControls();
-
   });
 
   video.addEventListener("play", () => {
-
     playBtn.textContent = "Ⅱ";
-
     updateCenter();
-
     showControls();
-
   });
 
   video.addEventListener("pause", () => {
-
     playBtn.textContent = "▶";
-
     clearTimeout(centerTimer);
-
     updateCenter();
 
-    if (!overlay.classList.contains("show")) {
-      showControls();
-    }
-
+    if (!overlay.classList.contains("show")) showControls();
   });
 
   video.addEventListener("ended", () => {
-
     updateCenter();
-
     showControls();
-
   });
 
   video.addEventListener("loadedmetadata", () => {
-
-    timeEl.textContent =
-      "0:00 / " + formatTime(video.duration);
-
+    timeEl.textContent = "0:00 / " + formatTime(video.duration);
   });
 
   video.addEventListener("timeupdate", () => {
-
     if (video.duration) {
-
-      progressFill.style.width =
-        (video.currentTime / video.duration * 100) + "%";
+      progressFill.style.width = (video.currentTime / video.duration * 100) + "%";
 
       timeEl.textContent =
-        formatTime(video.currentTime) +
-        " / " +
-        formatTime(video.duration);
-
+        formatTime(video.currentTime) + " / " + formatTime(video.duration);
     }
 
     if (
@@ -1728,133 +1531,81 @@ footer {
       gateCount < GATE_TIMES.length &&
       video.currentTime >= GATE_TIMES[gateCount]
     ) {
-
       gateCount++;
-
       gateShown = true;
-
       video.pause();
-
       overlay.classList.add("show");
-
       shell.classList.remove("controls-hidden");
-
       clearTimeout(controlsTimer);
-
       updateCenter();
-
     }
-
   });
 
   overlay.querySelector('[data-action="continue-ad"]')
     .addEventListener("click", () => {
-
       overlay.classList.remove("show");
-
       gateShown = false;
-
       video.play().catch(() => updateCenter());
-
     });
 
   numberButtons.forEach(button => {
-
     button.addEventListener("click", () => {
-
-      const index = Number(button.dataset.video);
-
-      selectVideo(index);
-
+      selectVideo(Number(button.dataset.video));
     });
-
   });
 
   document.addEventListener("fullscreenchange", () => {
-
-    const isFullscreen =
-      document.fullscreenElement === shell;
-
+    const isFullscreen = document.fullscreenElement === shell;
     shell.classList.toggle("is-fullscreen", isFullscreen);
-
     showControls();
-
   });
 
   shell.addEventListener("pointerdown", event => {
-
     if (event.target.closest("button, .progress, a")) return;
-
     if (overlay.classList.contains("show")) return;
-
     showControls();
-
   });
 
   document.getElementById("shareButton")
     .addEventListener("click", async () => {
-
       try {
-
         if (navigator.share) {
-
           await navigator.share({
             title: document.title,
             text: "Tonton video ini",
             url: location.href
           });
-
-        } else if (
-          navigator.clipboard &&
-          navigator.clipboard.writeText
-        ) {
-
+        } else if (navigator.clipboard && navigator.clipboard.writeText) {
           await navigator.clipboard.writeText(location.href);
-
           alert("Link halaman berhasil disalin");
-
         } else {
-
           prompt("Salin link halaman ini:", location.href);
-
         }
-
       } catch (error) {
-
         // Berbagi dibatalkan atau tidak tersedia.
-
       }
-
     });
 
   updateCenter();
-
   requestAnimationFrame(updateScrollArrows);
 
+  window.mainVideoSelection = currentSelection;
 })();
 </script>
 
-<!-- JAVASCRIPT VIDEO TRENDING: PLAY/PAUSE TENGAH DISESUAIKAN -->
+<!-- JAVASCRIPT VIDEO TRENDING -->
 
 <script>
 (() => {
   "use strict";
 
-  /*
-    DAFTAR VIDEO TRENDING.
-    TAMBAHKAN LINK BARU DI BAWAH INI.
-    NOMOR VIDEO AKAN DIBUAT OTOMATIS.
-  */
-
   const TRENDING_SOURCES = [
-
     "https://cdn2.videy.co/Z42u3hqk1.mp4",
     "https://cdn2.videy.co/tR269RaD1.mp4",
     "https://cdn2.videy.co/EGKmje6t1.mp4",
     "https://cdn2.videy.co/dcvIGnYr1.mp4",
     "https://cdn2.videy.co/bCHom5kN1.mp4",
     "https://cdn2.videy.co/LGDnuSQI1.mp4"
-
   ];
 
   const TRENDING_GATE_TIMES = [15, 40];
@@ -1878,462 +1629,245 @@ footer {
   let gateShown = false;
   let controlsTimer = null;
   let centerTimer = null;
+  let currentTrendingSelection = 0;
 
   function formatTime(seconds) {
-
-    if (!Number.isFinite(seconds) || seconds < 0) {
-      return "0:00";
-    }
+    if (!Number.isFinite(seconds) || seconds < 0) return "0:00";
 
     const minutes = Math.floor(seconds / 60);
-
-    const secs = Math.floor(seconds % 60)
-      .toString()
-      .padStart(2, "0");
+    const secs = Math.floor(seconds % 60).toString().padStart(2, "0");
 
     return minutes + ":" + secs;
-
   }
 
-  /* MEMBUAT NOMOR TRENDING OTOMATIS */
-
   TRENDING_SOURCES.forEach((source, index) => {
-
     const button = document.createElement("button");
-
     button.type = "button";
     button.className = "trending-number";
     button.textContent = String(index + 1);
     button.dataset.index = String(index);
-
-    button.setAttribute(
-      "aria-label",
-      "Pilih Trending Video " + (index + 1)
-    );
-
+    button.setAttribute("aria-label", "Pilih Trending Video " + (index + 1));
     button.setAttribute("aria-pressed", "false");
-
     numbers.appendChild(button);
-
   });
 
-  const numberButtons =
-    numbers.querySelectorAll(".trending-number");
-
-  /* PANAH GESER NOMOR */
+  const numberButtons = numbers.querySelectorAll(".trending-number");
 
   function updateArrows() {
-
-    const maxScroll = Math.max(
-      0,
-      numbers.scrollWidth - numbers.clientWidth
-    );
-
+    const maxScroll = Math.max(0, numbers.scrollWidth - numbers.clientWidth);
     scrollLeft.disabled = numbers.scrollLeft <= 2;
-
-    scrollRight.disabled =
-      numbers.scrollLeft >= maxScroll - 2;
-
+    scrollRight.disabled = numbers.scrollLeft >= maxScroll - 2;
   }
 
   scrollLeft.addEventListener("click", () => {
-
-    numbers.scrollBy({
-      left: -180,
-      behavior: "smooth"
-    });
-
+    numbers.scrollBy({ left: -180, behavior: "smooth" });
   });
 
   scrollRight.addEventListener("click", () => {
-
-    numbers.scrollBy({
-      left: 180,
-      behavior: "smooth"
-    });
-
+    numbers.scrollBy({ left: 180, behavior: "smooth" });
   });
 
   numbers.addEventListener("scroll", updateArrows);
-
   window.addEventListener("resize", updateArrows);
 
-  /* TAMPILKAN DAN SEMBUNYIKAN KONTROL TRENDING */
-
   function showControls() {
-
     clearTimeout(controlsTimer);
-
     player.classList.remove("controls-hidden");
 
     if (!video.paused && !overlay.classList.contains("show")) {
-
       controlsTimer = setTimeout(() => {
-
-        if (
-          !video.paused &&
-          !overlay.classList.contains("show")
-        ) {
-
+        if (!video.paused && !overlay.classList.contains("show")) {
           player.classList.add("controls-hidden");
-
         }
-
       }, 2200);
-
     }
-
   }
 
-  /* IKON PLAY/PAUSE DI TENGAH */
-
   function updateCenter() {
-
     if (video.paused || video.ended) {
-
       centerPlay.classList.remove("hidden");
       centerPlay.textContent = "▶";
       centerPlay.setAttribute("aria-label", "Putar video trending");
-
     } else {
-
       centerPlay.classList.add("hidden");
-
     }
-
   }
 
   function togglePlay() {
-
     if (overlay.classList.contains("show")) return;
 
     if (video.paused) {
-
       video.play().catch(() => updateCenter());
-
     } else {
-
       video.pause();
-
     }
-
   }
 
   centerPlay.addEventListener("click", event => {
-
     event.stopPropagation();
-
     togglePlay();
-
   });
 
   playButton.addEventListener("click", togglePlay);
 
-  /*
-    INI BAGIAN UTAMA YANG DIPERBAIKI:
-    SAAT VIDEO TRENDING SEDANG BERJALAN DAN LAYAR DITEKAN,
-    IKON PAUSE MUNCUL DI TENGAH SELAMA 1,8 DETIK.
-  */
-
   video.addEventListener("click", () => {
-
     showControls();
 
     if (!video.paused) {
-
       centerPlay.classList.remove("hidden");
-
       centerPlay.textContent = "Ⅱ";
-
-      centerPlay.setAttribute(
-        "aria-label",
-        "Jeda video trending"
-      );
-
+      centerPlay.setAttribute("aria-label", "Jeda video trending");
       clearTimeout(centerTimer);
 
       centerTimer = setTimeout(() => {
-
-        if (!video.paused) {
-          centerPlay.classList.add("hidden");
-        }
-
+        if (!video.paused) centerPlay.classList.add("hidden");
       }, 1800);
-
     } else {
-
       updateCenter();
-
     }
-
   });
 
   video.addEventListener("play", () => {
-
     playButton.textContent = "Ⅱ";
-
     updateCenter();
-
     showControls();
-
   });
 
   video.addEventListener("pause", () => {
-
     playButton.textContent = "▶";
-
     clearTimeout(centerTimer);
-
     updateCenter();
 
-    if (!overlay.classList.contains("show")) {
-      showControls();
-    }
-
+    if (!overlay.classList.contains("show")) showControls();
   });
 
   video.addEventListener("ended", () => {
-
     updateCenter();
-
     showControls();
-
   });
 
-  /* FULLSCREEN TRENDING */
-
   async function toggleFullscreen() {
-
     try {
-
       if (document.fullscreenElement === player) {
-
         await document.exitFullscreen();
-
       } else if (player.requestFullscreen) {
-
         await player.requestFullscreen();
-
       } else {
-
         player.classList.toggle("is-fullscreen");
-
       }
-
     } catch (error) {
-
       player.classList.toggle("is-fullscreen");
-
     }
-
   }
 
-  document
-    .getElementById("trendingFullscreen")
+  document.getElementById("trendingFullscreen")
     .addEventListener("click", toggleFullscreen);
 
   document.addEventListener("fullscreenchange", () => {
-
-    const isFullscreen =
-      document.fullscreenElement === player;
-
+    const isFullscreen = document.fullscreenElement === player;
     player.classList.toggle("is-fullscreen", isFullscreen);
-
     showControls();
-
   });
 
-  /* PROGRESS BAR TRENDING */
-
   function seekVideo(clientX) {
-
-    if (
-      !video.duration ||
-      overlay.classList.contains("show")
-    ) return;
+    if (!video.duration || overlay.classList.contains("show")) return;
 
     const rect = progress.getBoundingClientRect();
-
     if (!rect.width) return;
 
-    const percent = Math.max(
-      0,
-      Math.min(1, (clientX - rect.left) / rect.width)
-    );
-
+    const percent = Math.max(0, Math.min(1, (clientX - rect.left) / rect.width));
     video.currentTime = percent * video.duration;
-
     showControls();
-
   }
 
   progress.addEventListener("click", event => {
-
     event.stopPropagation();
-
     seekVideo(event.clientX);
-
   });
 
   progress.addEventListener("keydown", event => {
-
-    if (
-      event.key !== "ArrowRight" &&
-      event.key !== "ArrowLeft"
-    ) return;
-
+    if (event.key !== "ArrowRight" && event.key !== "ArrowLeft") return;
     event.preventDefault();
 
-    if (
-      !video.duration ||
-      overlay.classList.contains("show")
-    ) return;
+    if (!video.duration || overlay.classList.contains("show")) return;
 
-    const change =
-      event.key === "ArrowRight" ? 5 : -5;
+    const change = event.key === "ArrowRight" ? 5 : -5;
 
     video.currentTime = Math.max(
       0,
-      Math.min(
-        video.duration,
-        video.currentTime + change
-      )
+      Math.min(video.duration, video.currentTime + change)
     );
 
     showControls();
-
   });
 
   video.addEventListener("loadedmetadata", () => {
-
-    timeDisplay.textContent =
-      "0:00 / " + formatTime(video.duration);
-
+    timeDisplay.textContent = "0:00 / " + formatTime(video.duration);
   });
 
   video.addEventListener("timeupdate", () => {
-
     if (video.duration) {
-
-      const percent =
-        video.currentTime / video.duration * 100;
-
+      const percent = video.currentTime / video.duration * 100;
       progressFill.style.width = percent + "%";
 
       timeDisplay.textContent =
-        formatTime(video.currentTime) +
-        " / " +
-        formatTime(video.duration);
-
+        formatTime(video.currentTime) + " / " + formatTime(video.duration);
     }
-
-    /* GATE IKLAN TRENDING PADA DETIK 15 DAN 40 */
 
     if (
       !gateShown &&
       gateIndex < TRENDING_GATE_TIMES.length &&
       video.currentTime >= TRENDING_GATE_TIMES[gateIndex]
     ) {
-
       gateIndex++;
-
       gateShown = true;
-
       video.pause();
-
       overlay.classList.add("show");
-
       player.classList.remove("controls-hidden");
-
       clearTimeout(controlsTimer);
-
       updateCenter();
-
     }
-
   });
-
-  /* LANJUTKAN VIDEO SETELAH TOMBOL IKLAN DITEKAN */
 
   continueButton.addEventListener("click", () => {
-
     overlay.classList.remove("show");
-
     gateShown = false;
-
     video.play().catch(() => updateCenter());
-
   });
 
-  /* MEMILIH VIDEO TRENDING */
-
   function selectTrending(index) {
-
-    if (
-      !Number.isInteger(index) ||
-      index < 0 ||
-      index >= TRENDING_SOURCES.length
-    ) return;
+    if (!Number.isInteger(index) || index < 0 || index >= TRENDING_SOURCES.length) return;
 
     video.pause();
-
     clearTimeout(controlsTimer);
     clearTimeout(centerTimer);
 
     player.classList.remove("controls-hidden");
-
     gateIndex = 0;
     gateShown = false;
-
     overlay.classList.remove("show");
+    currentTrendingSelection = index;
 
     video.src = TRENDING_SOURCES[index];
-
     video.load();
 
-    // Judul dan status tetap diperbarui,
-    // tetapi disembunyikan dari tampilan halaman.
-
-    title.textContent =
-      "Trending Video " + (index + 1);
+    title.textContent = "Trending Video " + (index + 1);
 
     description.textContent =
-      "Kamu sedang menonton Trending Video " +
-      (index + 1) + ".";
-
-    // Nomor aktif diberi warna.
+      "Kamu sedang menonton Trending Video " + (index + 1) + ".";
 
     numberButtons.forEach((button, buttonIndex) => {
-
       const active = buttonIndex === index;
-
       button.classList.toggle("active", active);
-
-      button.setAttribute(
-        "aria-pressed",
-        String(active)
-      );
-
+      button.setAttribute("aria-pressed", String(active));
     });
 
-    // Reset progress dan tombol.
-
     progressFill.style.width = "0%";
-
     timeDisplay.textContent = "0:00 / 0:00";
-
     playButton.textContent = "▶";
-
     centerPlay.textContent = "▶";
-
     centerPlay.classList.remove("hidden");
-
-    centerPlay.setAttribute(
-      "aria-label",
-      "Putar video trending"
-    );
-
-    // Geser nomor aktif agar terlihat.
+    centerPlay.setAttribute("aria-label", "Putar video trending");
 
     numberButtons[index].scrollIntoView({
       behavior: "smooth",
@@ -2343,40 +1877,223 @@ footer {
 
     updateArrows();
 
-    // Video tidak autoplay.
-
+    if (window.applyPageLanguage) {
+      window.applyPageLanguage();
+    }
   }
 
   numberButtons.forEach(button => {
-
     button.addEventListener("click", () => {
-
       selectTrending(Number(button.dataset.index));
-
     });
-
   });
-
-  /* KLIK AREA PLAYER UNTUK MEMUNCULKAN KONTROL */
 
   player.addEventListener("pointerdown", event => {
-
-    if (event.target.closest("button, .trending-progress, a")) {
-      return;
-    }
-
+    if (event.target.closest("button, .trending-progress, a")) return;
     if (overlay.classList.contains("show")) return;
-
     showControls();
-
   });
 
-  // Muat video Trending pertama saat halaman dibuka.
-
   selectTrending(0);
-
   requestAnimationFrame(updateArrows);
 
+  window.trendingVideoSelection = currentTrendingSelection;
+})();
+</script>
+
+<!-- PENGATUR BAHASA INDONESIA DAN ENGLISH -->
+
+<script>
+(() => {
+  "use strict";
+
+  const translations = {
+    id: {
+      pageTitle: "▶️KOLEKSI",
+      description: "Tonton video terbaru dan video lainnya.",
+      badge: "HD • Mobile Friendly",
+      continueTitle: "Lanjutkan Video",
+      continueDescription: "Video dijeda sementara. Tekan tombol di bawah jika ingin membuka tautan iklan dan melanjutkan video.",
+      continueButton: "Lanjutkan & Buka Iklan",
+      adNote: "Tautan dibuka hanya setelah kamu menekan tombol.",
+      chooseVideo: "✨ Pilih Video",
+      chooseVideoDescription: "Pilih nomor video atau geser deretan angka ke kanan untuk melihat video lainnya.",
+      collectionTitle: "🔥 Kumpulan Video Lengkap",
+      collectionDescription: "Temukan video lainnya dalam satu koleksi. Klik tombol di bawah untuk melihat selengkapnya.",
+      collectionButton: "Lihat Koleksi Video Lengkap ↗",
+      trendingTitle: "🔥 Video Trending Paling Banyak Ditonton",
+      trendingDescription: "Temukan video yang sedang trending dan paling banyak ditonton. Pilih nomor video untuk melihat koleksi trending lainnya.",
+      trendingOverlayDescription: "Video dijeda sementara. Tekan tombol di bawah untuk membuka tautan dan melanjutkan video.",
+      chooseTrending: "✨ Pilih Video Trending",
+      footer: "© 2026 • Video Player",
+      mainTitle: "Video Utama",
+      mainDescription: "Nikmati video utama dengan tampilan nyaman di HP maupun desktop.",
+      nowMain: "Sedang dipilih: Video Utama",
+      selected: "Video terpilih:",
+      pressPlay: "Tekan Play untuk menonton"
+    },
+    en: {
+      pageTitle: "▶️COLLECTION",
+      description: "Watch the latest videos and explore more.",
+      badge: "HD • Mobile Friendly",
+      continueTitle: "Continue Watching",
+      continueDescription: "The video is temporarily paused. Press the button below to open the ad link and continue watching.",
+      continueButton: "Continue & Open Link",
+      adNote: "The link will only open after you press the button.",
+      chooseVideo: "✨ Choose a Video",
+      chooseVideoDescription: "Select a video number or swipe the numbers to the right to see more videos.",
+      collectionTitle: "🔥 Complete Video Collection",
+      collectionDescription: "Discover more videos in one collection. Click the button below to explore more.",
+      collectionButton: "View Full Video Collection ↗",
+      trendingTitle: "🔥 Most-Watched Trending Videos",
+      trendingDescription: "Discover trending and popular videos. Select a video number to explore more trending videos.",
+      trendingOverlayDescription: "The video is temporarily paused. Press the button below to open the link and continue watching.",
+      chooseTrending: "✨ Choose a Trending Video",
+      footer: "© 2026 • Video Player",
+      mainTitle: "Main Video",
+      mainDescription: "Enjoy the main video with a comfortable viewing experience on mobile and desktop.",
+      nowMain: "Currently selected: Main Video",
+      selected: "Selected:",
+      pressPlay: "Press Play to watch"
+    }
+  };
+
+  let currentLanguage = "id";
+
+  try {
+    const savedLanguage = localStorage.getItem("websiteLanguage");
+    if (savedLanguage === "id" || savedLanguage === "en") {
+      currentLanguage = savedLanguage;
+    }
+  } catch (error) {
+    currentLanguage = "id";
+  }
+
+  function getMainSelection() {
+    return Number.isInteger(window.mainVideoSelection)
+      ? window.mainVideoSelection
+      : -1;
+  }
+
+  function getTrendingSelection() {
+    return Number.isInteger(window.trendingVideoSelection)
+      ? window.trendingVideoSelection
+      : 0;
+  }
+
+  function applyDynamicTexts() {
+    const t = translations[currentLanguage];
+    const mainIndex = getMainSelection();
+    const trendingIndex = getTrendingSelection();
+
+    const mainTitle = mainIndex === -1
+      ? t.mainTitle
+      : "Video " + (mainIndex + 1);
+
+    document.getElementById("videoTitle").textContent = mainTitle;
+
+    document.getElementById("videoDescription").textContent =
+      mainIndex === -1 ? t.mainDescription : "";
+
+    document.getElementById("nowPlaying").textContent =
+      currentLanguage === "id"
+        ? (mainIndex === -1
+            ? t.nowMain
+            : t.selected + " Video " + (mainIndex + 1) + " • " + t.pressPlay)
+        : (mainIndex === -1
+            ? t.nowMain
+            : t.selected + " Video " + (mainIndex + 1) + " • " + t.pressPlay);
+
+    document.getElementById("trendingVideoTitle").textContent =
+      "Trending Video " + (trendingIndex + 1);
+
+    document.getElementById("trendingVideoDescription").textContent =
+      currentLanguage === "id"
+        ? "Kamu sedang menonton Trending Video " + (trendingIndex + 1) + "."
+        : "You are watching Trending Video " + (trendingIndex + 1) + ".";
+  }
+
+  function applyLanguage(language) {
+    if (language !== "id" && language !== "en") return;
+
+    currentLanguage = language;
+
+    const t = translations[language];
+
+    document.documentElement.lang = language;
+    document.title = t.pageTitle;
+
+    document.querySelector('meta[name="description"]')
+      .setAttribute("content", t.description);
+
+    document.querySelector('meta[property="og:title"]')
+      .setAttribute("content", t.pageTitle);
+
+    document.querySelector('meta[property="og:description"]')
+      .setAttribute("content", t.description);
+
+    document.querySelector('meta[name="twitter:title"]')
+      .setAttribute("content", t.pageTitle);
+
+    document.querySelector('meta[name="twitter:description"]')
+      .setAttribute("content", t.description);
+
+    document.querySelectorAll("[data-i18n]").forEach(element => {
+      const key = element.getAttribute("data-i18n");
+
+      if (t[key]) {
+        element.textContent = t[key];
+      }
+    });
+
+    document.querySelectorAll(".lang-btn").forEach(button => {
+      const active = button.dataset.lang === language;
+      button.classList.toggle("active", active);
+      button.setAttribute("aria-pressed", String(active));
+    });
+
+    const shareButton = document.getElementById("shareButton");
+    shareButton.setAttribute(
+      "aria-label",
+      language === "id" ? "Bagikan" : "Share"
+    );
+
+    document.querySelector(".center-play-btn")
+      .setAttribute("aria-label", language === "id" ? "Putar video" : "Play video");
+
+    document.querySelector('[data-action="play"]')
+      .setAttribute("aria-label", language === "id" ? "Putar atau jeda" : "Play or pause");
+
+    document.querySelector('[data-action="fullscreen"]')
+      .setAttribute("aria-label", "Fullscreen");
+
+    document.getElementById("trendingCenterPlay")
+      .setAttribute("aria-label", language === "id" ? "Putar video trending" : "Play trending video");
+
+    document.getElementById("trendingPlayButton")
+      .setAttribute("aria-label", language === "id" ? "Putar atau jeda" : "Play or pause");
+
+    document.getElementById("trendingFullscreen")
+      .setAttribute("aria-label", "Fullscreen");
+
+    applyDynamicTexts();
+
+    try {
+      localStorage.setItem("websiteLanguage", language);
+    } catch (error) {
+      // Bahasa tetap bisa digunakan meskipun penyimpanan tidak tersedia.
+    }
+  }
+
+  document.querySelectorAll(".lang-btn").forEach(button => {
+    button.addEventListener("click", () => {
+      applyLanguage(button.dataset.lang);
+    });
+  });
+
+  window.applyPageLanguage = applyDynamicTexts;
+
+  applyLanguage(currentLanguage);
 })();
 </script>
 
@@ -2395,11 +2112,8 @@ _Hasync.push(['Histats.fasi', '1']);
 _Hasync.push(['Histats.track_hits', '']);
 
 (function() {
-
   var hs = document.createElement('script');
-
   hs.type = 'text/javascript';
-
   hs.async = true;
 
   hs.src = ('https:' == document.location.protocol
@@ -2407,7 +2121,6 @@ _Hasync.push(['Histats.track_hits', '']);
 
   (document.getElementsByTagName('head')[0] ||
    document.getElementsByTagName('body')[0]).appendChild(hs);
-
 })();
 </script>
 
